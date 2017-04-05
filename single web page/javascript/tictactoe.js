@@ -1,3 +1,5 @@
+window.onload = StartGame();
+
 function StartGame(){
     Clear();
     document.turn="X";
@@ -9,7 +11,7 @@ function StartGame(){
 }
 
 function SendMessage(msg){
-    document.getElementById('message').innerText=msg;
+    document.getElementById('message').textContent=msg;
 }
 
 function NextMove(square){
@@ -17,8 +19,8 @@ function NextMove(square){
     if(document.winner!=null){
         SendMessage("Game over! Player : " +document.winner + " already won");
     }
-    else if(square.innerText==""){
-        square.innerText=document.turn;
+    else if(square.textContent==""){
+        square.textContent=document.turn;
         square.className="piece";
         switchTurn();
         if(document.draw>=9){
@@ -88,13 +90,13 @@ function checkForWinner(move){
 }
 
 function getBox(number){
-    return document.getElementById('s'+number).innerText;
+    return document.getElementById('s'+number).textContent;
 }
 function Clear(){
     var pieces =[];
     pieces = document.getElementsByClassName('piece');
     for (var i =0;i<pieces.length;i++){
-        pieces[i].innerText="";
+        pieces[i].textContent="";
     }
 }
 
